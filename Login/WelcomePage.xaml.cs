@@ -17,18 +17,19 @@ namespace Login
     /// <summary>
     /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class WelcomePage : Window
     {
-        
-        public Window1()
+        private DatabaseConnection database;
+        public WelcomePage()
         {
             InitializeComponent();
         }
 
-        public void startPage(String uname)
+        public void StartPage(String uname, DatabaseConnection database)
         {
+            this.database = database;
             this.Show();
-            Loggedon_name.Text = "Username : " + uname;
+            Loggedon_name.Text = "User ID : "+this.database.getUserId(uname)+"   Username : " + uname;
         }
 
         private void Logout_Button_Click(object sender, RoutedEventArgs e)

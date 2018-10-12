@@ -20,23 +20,24 @@ namespace Login
     /// </summary>
     public partial class MainWindow : Window
     {
-        Window1 window1;
+        private WelcomePage welcomePage;
+        private Task dbConnection;
+        private DatabaseConnection database;
         public MainWindow()
         {
             InitializeComponent();
             status.Text = "";
-            
+            database = new DatabaseConnection();
         }
 
         private void Login_Button_Click(object sender, RoutedEventArgs e)
-        {
-            DatabaseConnection database = new DatabaseConnection();
+        {            
             database.connect();
             if (database.verifyUser(Username_textbox.Text.Trim(),
                 Password_textbox.Password.ToString().Trim()))
             {
-                window1 = new Window1();
-                window1.startPage(Username_textbox.Text);
+                welcomePage = new WelcomePage();
+                welcomePage.StartPage(Username_textbox.Text, database);
                 this.Close();
             }
             else

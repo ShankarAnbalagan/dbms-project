@@ -8,7 +8,7 @@ using System.Windows;
 
 namespace Login
 {
-    class DatabaseConnection
+    public class DatabaseConnection
     {
         private MySqlConnection sqlConnection;
         private String connection_string;
@@ -49,7 +49,7 @@ namespace Login
             MySqlDataReader dataReader = mySqlCommand.ExecuteReader();
             String p="lol";
             while (dataReader.Read())
-                p = dataReader[0].ToString();
+             p = dataReader[0].ToString();
             dataReader.Close();
             if (p.Equals(pass))
                 return true;
@@ -57,9 +57,22 @@ namespace Login
                 return false;
         }
 
+        public String getUserId(String uname)
+        {
+            String query = "SELECT user_id FROM login_data WHERE user_name = '" + uname + "';";
+            MySqlCommand mySqlCommand = new MySqlCommand(query, sqlConnection);
+            MySqlDataReader dataReader = mySqlCommand.ExecuteReader();
+            String p = "lol";
+            while (dataReader.Read())
+                p = dataReader[0].ToString();
+            dataReader.Close();
+            return p;
+        }
+
         ~DatabaseConnection()
         {
-            sqlConnection.Close();
+            if(sqlConnection!=null)
+                sqlConnection.Close();
         }
     }
 }
