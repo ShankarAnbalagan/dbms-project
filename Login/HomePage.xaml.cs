@@ -12,15 +12,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Login
+namespace MockSAP
 {
     /// <summary>
     /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class WelcomePage : Window
+    public partial class HomePage : Window
     {
         private DatabaseConnection database;
-        public WelcomePage()
+        public HomePage()
         {
             InitializeComponent();
         }

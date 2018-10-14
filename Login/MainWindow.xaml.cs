@@ -13,31 +13,32 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Login
+namespace MockSAP
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-        private WelcomePage welcomePage;
-        private Task dbConnection;
+        private HomePage homePage;
+        private AdminLogin adminLogin;
         private DatabaseConnection database;
         public MainWindow()
         {
             InitializeComponent();
             status.Text = "";
+            Username_textbox.Focus();
             database = new DatabaseConnection();
+            database.connect();
         }
 
         private void Login_Button_Click(object sender, RoutedEventArgs e)
         {            
-            database.connect();
             if (database.verifyUser(Username_textbox.Text.Trim(),
                 Password_textbox.Password.ToString().Trim()))
             {
-                welcomePage = new WelcomePage();
-                welcomePage.StartPage(Username_textbox.Text, database);
+                homePage = new HomePage();
+                homePage.StartPage(Username_textbox.Text, database);
                 this.Close();
             }
             else
@@ -46,6 +47,12 @@ namespace Login
                 Password_textbox.Clear();
                 status.Text = "Wrong username or password.";
             }
+        }
+
+        private void NewUser_Hyperlink_Click(object sender, RoutedEventArgs e)
+        {
+            adminLogin = new AdminLogin(database,this);
+            adminLogin.StartPage();
         }
     }
 }

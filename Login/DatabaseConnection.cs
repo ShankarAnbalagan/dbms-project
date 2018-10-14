@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Login
+namespace MockSAP
 {
     public class DatabaseConnection
     {
@@ -57,6 +57,21 @@ namespace Login
                 return false;
         }
 
+        public Boolean verifyUser(String AdminPass)
+        {
+            String query = "SELECT passwd FROM login_data WHERE user_name = 'ADMIN';";
+            MySqlCommand mySqlCommand = new MySqlCommand(query, sqlConnection);
+            MySqlDataReader dataReader = mySqlCommand.ExecuteReader();
+            String p = "lol";
+            while (dataReader.Read())
+                p = dataReader[0].ToString();
+            dataReader.Close();
+            if (p.Equals(AdminPass))
+                return true;
+            else
+                return false;
+        }
+
         public String getUserId(String uname)
         {
             String query = "SELECT user_id FROM login_data WHERE user_name = '" + uname + "';";
@@ -67,6 +82,26 @@ namespace Login
                 p = dataReader[0].ToString();
             dataReader.Close();
             return p;
+        }
+
+        public Boolean addUser(String uid, String uname, String upass)
+        {
+            String query = "INSERT INTO login_data VALUES("+uid+",'"+uname+"','"+upass+"');";
+            MySqlCommand mySqlCommand = new MySqlCommand(query, sqlConnection);
+            try
+            {
+                mySqlCommand.ExecuteNonQuery();
+            }catch(MySqlException e)
+            {
+                if (e.Number == 1062)
+                {
+                    MessageBox.Show("User already exists");
+                }
+                else
+                    MessageBox.Show(e.ToString());
+                return false;
+            }
+            return true;
         }
 
         ~DatabaseConnection()
