@@ -121,5 +121,10 @@ namespace MockSAP
 
             return true;
         }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            mainWindow.IsEnabled = true;
+        }
     }
 }

@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Login"
         mc:Ignorable="d"
+        Closed="Window_Closed"
         Title="MockSAP - Add New User" Height="244" Width="529.25" Background="Aquamarine" SizeToContent="Height"  ResizeMode="NoResize">
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Add New User" VerticalAlignment="Top" FontSize="25" FontFamily="Segoe UI Black" Foreground="White">
