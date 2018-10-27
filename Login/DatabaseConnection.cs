@@ -15,7 +15,7 @@ namespace MockSAP
         public DatabaseConnection()
         {
             String db_host = "localhost";
-            String db_name = "users";
+            String db_name = "mocksap";
             String db_username = "root";
             String db_password = "anbalagan";
             connection_string = "SERVER="+db_host+";DATABASE=" + db_name + 
@@ -96,6 +96,27 @@ namespace MockSAP
                 if (e.Number == 1062)
                 {
                     MessageBox.Show("User already exists");
+                }
+                else
+                    MessageBox.Show(e.ToString());
+                return false;
+            }
+            return true;
+        }
+
+        public Boolean removeUser(String uid, String upass)
+        {
+            String query = "DELETE FROM login_data WHERE user_id='" + uid + "' AND passwd='" + upass + "';";
+            MySqlCommand mySqlCommand = new MySqlCommand(query, sqlConnection);
+            try
+            {
+                mySqlCommand.ExecuteNonQuery();
+            }
+            catch (MySqlException e)
+            {
+                if (e.Number == 1062)
+                {
+                    MessageBox.Show("User ddes not exit");
                 }
                 else
                     MessageBox.Show(e.ToString());
