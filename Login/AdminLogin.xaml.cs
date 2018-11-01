@@ -41,12 +41,15 @@ namespace MockSAP
         {
             if (databaseConnection.verifyUser(AdminPassword.Password.ToString().Trim()))
             {
-                newUser = new NewUser(this,mainWindow,databaseConnection);
+                newUser = new NewUser(this, mainWindow, databaseConnection);
                 newUser.StartPage();
                 mainWindow.IsEnabled = false;
             }
             else
+            {
                 status.Text = "Wrong password";
+                AdminPassword.Clear();
+            }
         }
 
         private void Window_Closed(object sender, EventArgs e)

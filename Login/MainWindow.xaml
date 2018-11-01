@@ -13,7 +13,7 @@
         <PasswordBox x:Name="Password_textbox" HorizontalAlignment="Left" Margin="192,130,0,0" VerticalAlignment="Top" Width="120" Height="23"/>
         <TextBlock HorizontalAlignment="Left" Margin="122,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Password: "/></TextBlock>
         <Button Content="Log in" Margin="192,167,145,55" Click="Login_Button_Click"/>
-        <TextBlock x:Name="status" Margin="150,211,88,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBlock x:Name="status" Margin="150,204,87.6,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
         <TextBlock Margin="290,220,10,10" >
             <Hyperlink Click="NewUser_Hyperlink_Click">Add/Remove New User</Hyperlink>
         </TextBlock>
