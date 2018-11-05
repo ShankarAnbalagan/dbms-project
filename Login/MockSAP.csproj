@@ -62,6 +62,11 @@
     <Compile Include="AdminLogin.xaml.cs">
       <DependentUpon>AdminLogin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NewPurchase.xaml.cs">
+      <DependentUpon>NewPurchase.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PurchasesList.cs" />
+    <Compile Include="VendorList.cs" />
     <Compile Include="DatabaseConnection.cs" />
     <Compile Include="HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
@@ -83,6 +88,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="HomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NewPurchase.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

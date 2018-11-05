@@ -125,6 +125,84 @@ namespace MockSAP
             return true;
         }
 
+        public List<String[]> getVendors()
+        {
+            List<String[]> l = new List<String[]>();
+            String query = "SELECT * FROM vendor";
+            MySqlCommand mySqlCommand = new MySqlCommand(query, sqlConnection);
+            MySqlDataReader dataReader = mySqlCommand.ExecuteReader();
+            while (dataReader.Read())
+            {
+                String[] s = {
+                    dataReader[0].ToString(),dataReader[1].ToString(),dataReader[2].ToString(),dataReader[3].ToString()};
+                l.Add(s);
+            }
+            dataReader.Close();
+            return l;
+        }
+
+        public List<String[]> getPurchases()
+        {
+            List<String[]> l = new List<String[]>();
+            String query = "SELECT purchase_id, material_id, vendor_id, quantity, cost, DATE_FORMAT(date_of_purchase,'%y-%m-%d')" +
+                " FROM purchases;";
+            MySqlCommand mySqlCommand = new MySqlCommand(query, sqlConnection);
+            MySqlDataReader dataReader = mySqlCommand.ExecuteReader();
+            while (dataReader.Read())
+            {
+                String[] s = {
+                    dataReader[0].ToString(),dataReader[1].ToString(),dataReader[2].ToString(),dataReader[3].ToString(),dataReader[4].ToString(),dataReader[5].ToString()};
+                l.Add(s);
+            }
+            dataReader.Close();
+            return l;
+        }
+
+        public List<String> getMaterialNames()
+        {
+            List<String> l = new List<String>();
+            String query = "SELECT material_name FROM material;";
+            MySqlCommand mySqlCommand = new MySqlCommand(query, sqlConnection);
+            MySqlDataReader dataReader = mySqlCommand.ExecuteReader();
+            while (dataReader.Read())
+            {
+                l.Add(dataReader[0].ToString());
+            }
+            dataReader.Close();
+            return l;
+        }
+
+        public List<String> getVendorNames()
+        {
+            List<String> l = new List<String>();
+            String query = "SELECT vendor_name,vendor_id FROM vendor;";
+            MySqlCommand mySqlCommand = new MySqlCommand(query, sqlConnection);
+            MySqlDataReader dataReader = mySqlCommand.ExecuteReader();
+            while (dataReader.Read())
+            {
+                l.Add((dataReader[0].ToString()+","+dataReader[1]));
+            }
+            dataReader.Close();
+            return l;
+        }
+
+        public void NewPurchase(String purchase_id, String material_name, String vendor_id, String quantity, String cost, String[] date)
+        {
+            String query = "SELECT material_id FROM material WHERE material_name='"+material_name+"';";
+            MySqlCommand mySqlCommand = new MySqlCommand(query, sqlConnection);
+            MySqlDataReader dataReader = mySqlCommand.ExecuteReader();
+            String material_id = "";
+            while (dataReader.Read())
+            {
+                material_id = dataReader[0].ToString();
+            }
+            dataReader.Close();
+            query = "INSERT INTO purchases VALUES('"+purchase_id+"','"+material_id+"','"+vendor_id+"',"+quantity+","+cost+",'"+date[2]+"-"+date[1]+"-"+date[0]+"');";
+            mySqlCommand = new MySqlCommand(query, sqlConnection);
+            mySqlCommand.ExecuteNonQuery();
+            MessageBox.Show("Success");
+        }
+
         ~DatabaseConnection()
         {
             if(sqlConnection!=null)
