@@ -22,10 +22,12 @@ namespace MockSAP
     {
         private DatabaseConnection database;
         private DataTable purchaseTable;
-        private DataTable vendorListTable;
+        private DataTable vendorTable;
         private VendorList vendorList;
         private PurchasesList purchasesList;
         private NewPurchase newPurchase;
+        private NewVendor newVendor;
+        private ModifyVendor modifyVendor;
         public HomePage()
         {
             InitializeComponent();
@@ -38,8 +40,8 @@ namespace MockSAP
             Loggedon_name.Text = "User ID : "+this.database.getUserId(uname)+"   Username : " + uname;
             purchaseTable = new DataTable();
             purchasesList = new PurchasesList(purchaseTable, database);
-            vendorListTable = new DataTable();
-            vendorList = new VendorList(vendorListTable, database);
+            vendorTable = new DataTable();
+            vendorList = new VendorList(vendorTable, database);
             PopulateGridViews();
         }
 
@@ -61,7 +63,62 @@ namespace MockSAP
         private void new_purchase_Click(object sender, RoutedEventArgs e)
         {
             newPurchase = new NewPurchase();
-            newPurchase.StartPage(this.database);
+            this.IsEnabled = false;
+            newPurchase.StartPage(this.database,this);
+        }
+
+        public void RefreshPurchaseList()
+        {
+            purchaseTable.Clear();
+            PurchasesGrid.ItemsSource = purchasesList.AddRows().DefaultView;
+        }
+
+        public void RefreshVendorList()
+        {
+            vendorTable.Clear();
+            VendorListGrid.ItemsSource =vendorList.AddRows().DefaultView;
+        }
+
+        private void new_vendor_Click(object sender, RoutedEventArgs e)
+        {
+            newVendor = new NewVendor();
+            this.IsEnabled = false;
+            newVendor.StartPage(this.database,this);
+        }
+
+        private void modify_vendor_Click(object sender, RoutedEventArgs e)
+        {
+            DataRowView item = VendorListGrid.SelectedItem as DataRowView;
+            if (item == null)
+                MessageBox.Show("No Vendor Selected");
+            else
+            {
+                modifyVendor = new ModifyVendor();
+                this.IsEnabled = false;
+                modifyVendor.StartPage(database,this, item.Row[0].ToString());
+            }
+        }        
+
+        private void delete_vendor_Click(object sender, RoutedEventArgs e)
+        {
+            DataRowView item = VendorListGrid.SelectedItem as DataRowView;
+            if (item == null)
+                MessageBox.Show("No Vendor Selected");
+            else
+            {
+                MessageBoxResult result= MessageBox.Show("Are you sure you want to remove vendor with ID "
+                    +item.Row[0].ToString()+" ?", "Confirmation", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
+                {
+                    database.DeleteVendor(item.Row[0].ToString());
+                    RefreshVendorList();
+                    MessageBox.Show("Vendor Successfully Deleted");
+                }
+                else
+                {
+                    return;
+                }
+            }
         }
     }
 }

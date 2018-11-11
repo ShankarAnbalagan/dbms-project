@@ -20,14 +20,16 @@ namespace MockSAP
     public partial class NewPurchase : Window
     {
         DatabaseConnection databaseConnection;
+        HomePage homePage;
         public NewPurchase()
         {
             InitializeComponent();
             error.Text = "";
         }
 
-        public void StartPage(DatabaseConnection connection)
+        public void StartPage(DatabaseConnection connection, HomePage h)
         {
+            homePage = h;
             databaseConnection = connection;
             this.Show();            
         }
@@ -48,9 +50,9 @@ namespace MockSAP
         private void make_purchase_Click(object sender, RoutedEventArgs e)
         {
             error.Foreground = new SolidColorBrush(Colors.Red);
-            String pid = purchase_id.Text;
-            String mat = materials_dropdown.Text;
-            String temp_ven = vendor_dropdown.Text;
+            String pid = purchase_id.Text.Trim();
+            String mat = materials_dropdown.Text.Trim();
+            String temp_ven = vendor_dropdown.Text.Trim();
             String ven = "";
             try
             {
@@ -66,13 +68,19 @@ namespace MockSAP
             if (VerifyInput(pid, quan, cos))
             {
                 String[] date = dat.Split('-');
-                databaseConnection.NewPurchase(pid, mat, ven, quan, cos, date);
+                if(databaseConnection.NewPurchase(pid, mat, ven, quan, cos, date))
+                {
+                    MessageBox.Show("New purchase Added");
+                    homePage.RefreshPurchaseList();
+                    homePage.IsEnabled = true;
+                    this.Close();
+                }
             }            
         }
 
         private Boolean VerifyInput(String pid, String quan, String cos)
         {
-            if((pid.Length<=4 && pid.Length > 0) && IsDigitsOnly(quan) && IsDigitsOnly(cos))
+            if(!((pid.Length<=4 && pid.Length > 0) && IsDigitsOnly(quan) && IsDigitsOnly(cos)))
             {
                 error.Text="Incorrect entries. Enter values again.";
                 return false;
@@ -80,8 +88,14 @@ namespace MockSAP
             return true;
         }
 
-        private bool IsDigitsOnly(String str)
+        private Boolean IsDigitsOnly(String str)
         {
+            String[] s = str.Split('.');
+            str = "";
+            foreach(String i in s)
+            {
+                str +=i;
+            }
             for (int i = 0; i < str.Length; i++)
             {
                 if (str[i] < '0' || str[i] > '9')
@@ -91,5 +105,9 @@ namespace MockSAP
             return true;
         }
 
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            homePage.IsEnabled = true;
+        }
     }
 }

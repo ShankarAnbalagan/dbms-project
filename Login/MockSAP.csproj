@@ -62,8 +62,14 @@
     <Compile Include="AdminLogin.xaml.cs">
       <DependentUpon>AdminLogin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ModifyVendor.xaml.cs">
+      <DependentUpon>ModifyVendor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="NewPurchase.xaml.cs">
       <DependentUpon>NewPurchase.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NewVendor.xaml.cs">
+      <DependentUpon>NewVendor.xaml</DependentUpon>
     </Compile>
     <Compile Include="PurchasesList.cs" />
     <Compile Include="VendorList.cs" />
@@ -91,11 +97,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ModifyVendor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="NewPurchase.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="NewUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NewVendor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

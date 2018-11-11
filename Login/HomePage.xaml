@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Login"
         mc:Ignorable="d"
-        Title="MockSAP - Home"  Height="506" Width="729.5" Background="Aquamarine">
+        Title="MockSAP - Home"  Height="506" Width="729.5" Background="Aquamarine" >
     <Grid>
         <TextBlock x:Name="Loggedon_name" HorizontalAlignment="Left" Margin="10,449,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
         <Button Content="Log out" Click="Logout_Button_Click" HorizontalAlignment="Left" Margin="637,445,0,0" VerticalAlignment="Top" Width="75"/>
@@ -13,10 +13,13 @@
             <TabItem Header="Purchases">
                 <Grid Background="LightBlue" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                     <DataGrid x:Name="PurchasesGrid" HorizontalAlignment="Left" Height="175" Margin="191,227,0,0" VerticalAlignment="Top" Width="515"/>
-                    <DataGrid x:Name="VendorListGrid" HorizontalAlignment="Left" Height="165" Margin="314,29,0,0" VerticalAlignment="Top" Width="392"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="314,14,0,0" TextWrapping="Wrap" Text="Vendor List" VerticalAlignment="Top"/>
+                    <DataGrid x:Name="VendorListGrid" HorizontalAlignment="Left" Height="165" Margin="314,16,0,0" VerticalAlignment="Top" Width="392"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="314,0,0,0" TextWrapping="Wrap" Text="Vendor List" VerticalAlignment="Top"/>
                     <TextBlock HorizontalAlignment="Left" Margin="191,211,0,0" TextWrapping="Wrap" Text="Purchase History" VerticalAlignment="Top"/>
-                    <Button x:Name="new_purchase" Click="new_purchase_Click"  Content="Make new Purchase" HorizontalAlignment="Left" Margin="32,292,0,0" VerticalAlignment="Top" Width="127" Height="54"/>
+                    <Button x:Name="new_purchase" Click="new_purchase_Click"  Content="Make new Purchase" HorizontalAlignment="Left" Margin="33,281,0,0" VerticalAlignment="Top" Width="127" Height="54"/>
+                    <Button x:Name="new_vendor" Click="new_vendor_Click" Content="Add New Vendor" HorizontalAlignment="Left" Margin="33,68,0,0" VerticalAlignment="Top" Width="127" Height="54"/>
+                    <Button x:Name="modify_vendor" Click="modify_vendor_Click" Content="Modify Vendor data" HorizontalAlignment="Left" Margin="314,186,0,0" VerticalAlignment="Top" Width="127" Height="23"/>
+                    <Button x:Name="delete_vendor" Click="delete_vendor_Click" Content="Delete Vendor" HorizontalAlignment="Left" Margin="446,186,0,0" VerticalAlignment="Top" Width="127" Height="23"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Stores">

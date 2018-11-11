@@ -141,10 +141,25 @@ namespace MockSAP
             return l;
         }
 
+        public String[] getVendors(String vid)
+        {
+            String query = "SELECT * FROM vendor WHERE vendor_id = '"+vid+"';";
+            MySqlCommand mySqlCommand = new MySqlCommand(query, sqlConnection);
+            MySqlDataReader dataReader = mySqlCommand.ExecuteReader();
+            String[] s = null;
+            while (dataReader.Read())
+            {
+                s = new String[] {
+                    dataReader[0].ToString(),dataReader[1].ToString(),dataReader[2].ToString(),dataReader[3].ToString()};
+            }
+            dataReader.Close();
+            return s;
+        }
+
         public List<String[]> getPurchases()
         {
             List<String[]> l = new List<String[]>();
-            String query = "SELECT purchase_id, material_id, vendor_id, quantity, cost, DATE_FORMAT(date_of_purchase,'%y-%m-%d')" +
+            String query = "SELECT purchase_id, material_id, vendor_id, quantity, cost, DATE_FORMAT(date_of_purchase,'%d-%m-%y')" +
                 " FROM purchases;";
             MySqlCommand mySqlCommand = new MySqlCommand(query, sqlConnection);
             MySqlDataReader dataReader = mySqlCommand.ExecuteReader();
@@ -186,7 +201,7 @@ namespace MockSAP
             return l;
         }
 
-        public void NewPurchase(String purchase_id, String material_name, String vendor_id, String quantity, String cost, String[] date)
+        public Boolean NewPurchase(String purchase_id, String material_name, String vendor_id, String quantity, String cost, String[] date)
         {
             String query = "SELECT material_id FROM material WHERE material_name='"+material_name+"';";
             MySqlCommand mySqlCommand = new MySqlCommand(query, sqlConnection);
@@ -198,9 +213,84 @@ namespace MockSAP
             }
             dataReader.Close();
             query = "INSERT INTO purchases VALUES('"+purchase_id+"','"+material_id+"','"+vendor_id+"',"+quantity+","+cost+",'"+date[2]+"-"+date[1]+"-"+date[0]+"');";
+            try
+            {
+                mySqlCommand = new MySqlCommand(query, sqlConnection);
+                mySqlCommand.ExecuteNonQuery();
+            }catch(MySqlException e)
+            {
+                if (e.Number == 1062)
+                {
+                    MessageBox.Show("Purchase ID already exists");
+                }
+                else
+                    MessageBox.Show(e.ToString());
+                return false;
+            }
+
+            query = "SELECT total_quantity FROM material WHERE material_id='" + material_id + "';";
+            String material_quantity = "";
+            mySqlCommand = new MySqlCommand(query, sqlConnection);
+            dataReader = mySqlCommand.ExecuteReader();
+            while (dataReader.Read())
+            {
+                material_quantity = dataReader[0].ToString();
+            }
+            dataReader.Close();
+
+            double quan = Convert.ToDouble(material_quantity) + Convert.ToDouble(quantity);
+            query = "UPDATE material SET total_quantity = "+quan+" WHERE material_id ='"+material_id+"';";
             mySqlCommand = new MySqlCommand(query, sqlConnection);
             mySqlCommand.ExecuteNonQuery();
-            MessageBox.Show("Success");
+            return true;
+        }
+
+        public Boolean NewVendor(String vid, String vname, String vaddr, String vphone)
+        {
+            String query = "INSERT INTO vendor VALUES('"+vid+"','"+vname+"','"+vaddr+"','"+vphone+"');";
+            MySqlCommand mySqlCommand = new MySqlCommand(query, sqlConnection);
+            try
+            {
+                mySqlCommand.ExecuteNonQuery();
+            }catch(MySqlException e)
+            {
+                if (e.Number == 1062)
+                {
+                    MessageBox.Show("Vendor already exists");
+                    return false;
+                }
+                else
+                    MessageBox.Show(e.ToString());
+            }
+            return true;
+        }
+
+        public void DeleteVendor(String vid)
+        {
+            String query = "DELETE FROM vendor WHERE vendor_id='" + vid + "';";
+            MySqlCommand mySqlCommand = new MySqlCommand(query, sqlConnection);
+            mySqlCommand.ExecuteNonQuery();
+        }
+
+        public Boolean ModifyVendor(String vid, String vname, String vaddr, String vphone)
+        {
+            String query = "UPDATE vendor SET vendor_name='"+ vname + "', vendor_address='" + vaddr + "', vendor_phone='" + vphone + "' WHERE vendor_id='"+ vid +"';";
+            MySqlCommand mySqlCommand = new MySqlCommand(query, sqlConnection);
+            try
+            {
+                mySqlCommand.ExecuteNonQuery();
+            }
+            catch (MySqlException e)
+            {
+                if (e.Number == 1062)
+                {
+                    MessageBox.Show("Vendor already exists");
+                    return false;
+                }
+                else
+                    MessageBox.Show(e.ToString());
+            }
+            return true;
         }
 
         ~DatabaseConnection()
