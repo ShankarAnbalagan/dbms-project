@@ -62,15 +62,27 @@
     <Compile Include="AdminLogin.xaml.cs">
       <DependentUpon>AdminLogin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BuyerList.cs" />
+    <Compile Include="MaterialList.cs" />
+    <Compile Include="ModifyBuyer.xaml.cs">
+      <DependentUpon>ModifyBuyer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ModifyVendor.xaml.cs">
       <DependentUpon>ModifyVendor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NewBuyer.xaml.cs">
+      <DependentUpon>NewBuyer.xaml</DependentUpon>
     </Compile>
     <Compile Include="NewPurchase.xaml.cs">
       <DependentUpon>NewPurchase.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NewSale.xaml.cs">
+      <DependentUpon>NewSale.xaml</DependentUpon>
+    </Compile>
     <Compile Include="NewVendor.xaml.cs">
       <DependentUpon>NewVendor.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SalesList.cs" />
     <Compile Include="PurchasesList.cs" />
     <Compile Include="VendorList.cs" />
     <Compile Include="DatabaseConnection.cs" />
@@ -97,11 +109,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ModifyBuyer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ModifyVendor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="NewBuyer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="NewPurchase.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NewSale.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

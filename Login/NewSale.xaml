@@ -1,0 +1,31 @@
+﻿<Window x:Class="MockSAP.NewSale"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Login"
+        mc:Ignorable="d"
+        Title="MockSAP - New Sale" Height="321.2" Width="572.8" Background="Aquamarine" Closed="Window_Closed" >
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="New Sale" VerticalAlignment="Top" FontSize="25" FontFamily="Segoe UI Black" Foreground="White">
+            <TextBlock.Effect>
+                <DropShadowEffect/>
+            </TextBlock.Effect>
+        </TextBlock>
+        <TextBox x:Name="sale_id" HorizontalAlignment="Left" Height="23" Margin="173,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" MaxLength="4" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="92,75,0,0" TextWrapping="Wrap" Text="Enter Sales ID : " VerticalAlignment="Top"/>
+        <ComboBox x:Name="product_dropdown" Loaded="product_dropdown_Loaded" HorizontalAlignment="Left" Margin="173,121,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="86,127,0,0" TextWrapping="Wrap" Text="Select Product : " VerticalAlignment="Top"/>
+        <ComboBox x:Name="buyer_dropdown" Loaded="buyer_dropdown_Loaded" HorizontalAlignment="Left" Margin="414,121,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="341,127,0,0" TextWrapping="Wrap" Text="Select Buyer : " VerticalAlignment="Top"/>
+        <TextBox x:Name="quantity" HorizontalAlignment="Left" Height="23" Margin="173,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="47,172,0,0" TextWrapping="Wrap" Text="Enter Quantity(in no.) : " VerticalAlignment="Top"/>
+        <TextBox x:Name="cost" HorizontalAlignment="Left" Height="23" Margin="414,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="298,172,0,0" TextWrapping="Wrap" Text="Enter cost(in Crores) : " VerticalAlignment="Top"/>
+        <DatePicker x:Name="dateofsale" HorizontalAlignment="Left" Margin="173,205,0,0" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="66,209,0,0" TextWrapping="Wrap" Text="Enter Date of sale : " VerticalAlignment="Top"/>
+        <Button x:Name="make_sale" Click="make_sale_Click" Content="Make Sale" HorizontalAlignment="Left" Margin="335,226,0,0" VerticalAlignment="Top" Width="167" Height="45"/>
+        <TextBlock x:Name="error" HorizontalAlignment="Left" Margin="66,258,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
