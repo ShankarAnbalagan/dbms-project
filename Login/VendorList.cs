@@ -22,7 +22,7 @@ namespace MockSAP
             table.Columns.Add("Vendor ID");
             table.Columns.Add("Vendor Name");
             table.Columns.Add("Vendor Address");
-            table.Columns.Add("Vendor Phone no.");
+            table.Columns.Add("Vendor Phone no");
             return table;
         }
 
@@ -36,7 +36,7 @@ namespace MockSAP
                 dr[0] = s[0];
                 dr[1] = s[1];
                 dr[2] = s[2];
-                dr[3] = s[3];
+                dr[3] = s[3];                
                 table.Rows.Add(dr);
             }
             return table;

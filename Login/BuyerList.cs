@@ -22,7 +22,7 @@ namespace MockSAP
             table.Columns.Add("Buyer ID");
             table.Columns.Add("Buyer Name");
             table.Columns.Add("Buyer Address");
-            table.Columns.Add("Buyer Phone no.");
+            table.Columns.Add("Buyer Phone no");
             return table;
         }
 
