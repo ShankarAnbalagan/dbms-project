@@ -5,21 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Login"
         mc:Ignorable="d"
-        Title="MockSAP - Manufacture" Height="304.6" Width="466" Background="#00F7BA" ResizeMode="NoResize" Closed="Window_Closed">
+        Title="MockSAP - Manufacture" Height="304.6" Width="466" Background="#FF344955" ResizeMode="NoResize" Closed="Window_Closed">
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Manufacture New Product" VerticalAlignment="Top" FontSize="25" FontFamily="Segoe UI Black" Foreground="White">
-            <TextBlock.Effect>
-                <DropShadowEffect/>
-            </TextBlock.Effect>
-        </TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="73,92,0,0" TextWrapping="Wrap" Text="Enter Manufacturing ID : " VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="27,125,0,0" TextWrapping="Wrap" Text="Choose product to manufacture : " VerticalAlignment="Top"/>
-        <TextBox x:Name="manufacture_id" MaxLength="4" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="205,91,0,0"/>
-        <ComboBox x:Name="product_dropdown" Loaded="product_dropdown_Loaded" HorizontalAlignment="Left" Margin="205,125,0,0" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="manufacture" Click="manufacture_Click" Content="Manufacture Product" HorizontalAlignment="Left" Margin="130,200,0,0" VerticalAlignment="Top" Width="177" Height="26"/>
-        <DatePicker x:Name="date_of_manufacture" HorizontalAlignment="Left" Margin="205,158,0,0" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="53,162,0,0" TextWrapping="Wrap" Text="Select date of manufacture : " VerticalAlignment="Top"/>
-        <TextBlock x:Name="error" HorizontalAlignment="Left" Margin="73,249,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Manufacture New Product" VerticalAlignment="Top" FontSize="20" FontFamily="Yu Gothic UI Semibold" Foreground="White" IsEnabled="False"></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Foreground="White" Margin="251,54,0,0" TextWrapping="Wrap" Text="Enter Manufacturing ID : " VerticalAlignment="Top" FontFamily="Yu Gothic UI Semilight"/>
+        <TextBlock HorizontalAlignment="Left" Foreground="White" Margin="251,111,0,0" TextWrapping="Wrap" Text="Choose product to manufacture : " VerticalAlignment="Top"/>
+        <TextBox x:Name="manufacture_id" MaxLength="4" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" Margin="251,75,0,0"/>
+        <ComboBox x:Name="product_dropdown" Loaded="product_dropdown_Loaded" HorizontalAlignment="Left" Margin="251,132,0,0" VerticalAlignment="Top" Width="198"/>
+        <Button x:Name="manufacture" Click="manufacture_Click" Content="Manufacture Product" HorizontalAlignment="Left" Margin="252,239,0,0" VerticalAlignment="Top" Width="197" Height="26"/>
+        <DatePicker x:Name="date_of_manufacture" HorizontalAlignment="Left" Margin="251,195,0,0" VerticalAlignment="Top" Width="198"/>
+        <TextBlock HorizontalAlignment="Left" Foreground="White" Margin="251,174,0,0" TextWrapping="Wrap" Text="Select date of manufacture : " VerticalAlignment="Top"/>
+        <TextBlock x:Name="error" Foreground="Red" HorizontalAlignment="Left" Margin="10,182,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <Image Margin="10,212,327.2,0.2">
+            <Image.Source>
+                <BitmapImage  UriSource="D:\Programming\VS\MockSAP\Login\Logo.png" />
+            </Image.Source>
+        </Image>
 
     </Grid>
 </Window>
