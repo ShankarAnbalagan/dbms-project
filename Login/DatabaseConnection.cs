@@ -202,10 +202,24 @@ namespace MockSAP
             return l;
         }
 
+        public String getProductCost(String prodid)
+        {
+            String s="";
+            String query = "SELECT cost FROM manufacturing WHERE product_id='" + prodid + "';";
+            MySqlCommand mySqlCommand = new MySqlCommand(query, sqlConnection);
+            MySqlDataReader dataReader = mySqlCommand.ExecuteReader();
+            while (dataReader.Read())
+            {
+                s = dataReader[0].ToString();
+            }
+            dataReader.Close();
+            return s;
+        }
+
         public List<String> getProductlNames()
         {
             List<String> l = new List<String>();
-            String query = "SELECT product_name FROM stores;";
+            String query = "SELECT product_name FROM manufacturing;";
             MySqlCommand mySqlCommand = new MySqlCommand(query, sqlConnection);
             MySqlDataReader dataReader = mySqlCommand.ExecuteReader();
             while (dataReader.Read())
@@ -214,6 +228,112 @@ namespace MockSAP
             }
             dataReader.Close();
             return l;
+        }
+
+        public List<String> getManufactureProductslNames()
+        {
+            List<String> l = new List<String>();
+            String query = "SELECT product_name FROM manufacturing;";
+            MySqlCommand mySqlCommand = new MySqlCommand(query, sqlConnection);
+            MySqlDataReader dataReader = mySqlCommand.ExecuteReader();
+            while (dataReader.Read())
+            {
+                l.Add(dataReader[0].ToString());
+            }
+            dataReader.Close();
+            return l;
+        }
+
+        public String getProductId(String prodname)
+        {
+            String s = "";
+            String query = "SELECT product_id FROM manufacturing where product_name='"+prodname+"';";
+            MySqlCommand mySqlCommand = new MySqlCommand(query, sqlConnection);
+            MySqlDataReader dataReader = mySqlCommand.ExecuteReader();
+            while (dataReader.Read())
+            {
+                s=dataReader[0].ToString();
+            }
+            dataReader.Close();
+            return s;
+        }
+
+        public Dictionary<String,int> getManufacturingData(String id)
+        {
+            Dictionary<String, int> data = new Dictionary<String, int>();
+            String query = "SELECT Aluminium, Copper, Ceramic, Iron, Plastic, Silicon, Silver, Steel FROM manufacturing where product_id='" + id + "';";
+            MySqlCommand mySqlCommand = new MySqlCommand(query, sqlConnection);
+            MySqlDataReader dataReader = mySqlCommand.ExecuteReader();
+            while (dataReader.Read())
+            {
+                data.Add("Aluminium", Convert.ToInt32(dataReader[0].ToString()));
+                data.Add("Copper", Convert.ToInt32(dataReader[1].ToString()));
+                data.Add("Ceramic", Convert.ToInt32(dataReader[2].ToString()));
+                data.Add("Iron", Convert.ToInt32(dataReader[3].ToString()));
+                data.Add("Plastic", Convert.ToInt32(dataReader[4].ToString()));
+                data.Add("Silicon", Convert.ToInt32(dataReader[5].ToString()));
+                data.Add("Silver", Convert.ToInt32(dataReader[6].ToString()));
+                data.Add("Steel", Convert.ToInt32(dataReader[7].ToString()));
+            }
+            dataReader.Close();
+            return data;
+        }
+
+        public Dictionary<String,int> getQuantityFromMaterials(List<String> l)
+        {
+            String query = "";
+            MySqlCommand mySqlCommand;
+            MySqlDataReader dataReader;
+            Dictionary<String, int> data = new Dictionary<string, int>();
+            foreach (String s in l)
+            {
+                query = "SELECT total_quantity FROM material WHERE material_name='" + s + "';";
+                mySqlCommand = new MySqlCommand(query, sqlConnection);
+                dataReader = mySqlCommand.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    data.Add(s,Convert.ToInt32(dataReader[0].ToString()));
+                }
+                dataReader.Close();
+            }
+            return data;
+        }
+
+        public Boolean Manufacture(String manid, String prodid, Dictionary<String, int> data, Dictionary<String, int> reqdata, String[] date)
+        {
+            String query;
+            MySqlCommand mySqlCommand;
+            Dictionary<String, int> updatedata = new Dictionary<string, int>();
+            int n;
+            foreach (KeyValuePair<String, int> keyValuePair in data)
+            {
+                reqdata.TryGetValue(keyValuePair.Key, out n);
+                updatedata.Add(keyValuePair.Key, (n - keyValuePair.Value));
+            }
+            foreach(KeyValuePair<String,int> keyValuePair in updatedata)
+            {
+                query = "UPDATE material SET total_quantity = " + keyValuePair.Value + " WHERE material_name ='" + keyValuePair.Key + "';";
+                mySqlCommand = new MySqlCommand(query, sqlConnection);
+                mySqlCommand.ExecuteNonQuery();
+            }
+
+            query = "INSERT INTO products VALUE('" + manid + "','" + prodid + "','" + getProductCost(prodid) + "','" + date[2] + "-" + date[1] + "-" + date[0] + "');";
+            try
+            {
+                mySqlCommand = new MySqlCommand(query, sqlConnection);
+                mySqlCommand.ExecuteNonQuery();
+            }
+            catch (MySqlException e)
+            {
+                if (e.Number == 1062)
+                {
+                    MessageBox.Show("Manufacture ID already exists");
+                }
+                else
+                    MessageBox.Show(e.ToString());
+                return false;
+            }
+            return true;
         }
 
         public List<String> getVendorNames()
@@ -288,18 +408,38 @@ namespace MockSAP
             return true;
         }
 
-        public Boolean NewSale(String purchase_id, String material_name, String vendor_id, String quantity, String cost, String[] date)
+        public Boolean NewSale(String shipping_id, String product_name, String buyer_id, String cost, String[] date)
         {
-            String query = "SELECT product_id FROM stores WHERE product_name='" + material_name + "';";
+
+            String query = "SELECT product_id FROM manufacturing WHERE product_name='" + product_name + "';";
             MySqlCommand mySqlCommand = new MySqlCommand(query, sqlConnection);
             MySqlDataReader dataReader = mySqlCommand.ExecuteReader();
-            String material_id = "";
+            String product_id = "";
             while (dataReader.Read())
             {
-                material_id = dataReader[0].ToString();
+                product_id = dataReader[0].ToString();
             }
             dataReader.Close();
-            query = "INSERT INTO shipping VALUES('" + purchase_id + "','" + material_id + "','" + vendor_id + "'," + quantity + "," + cost + ",'" + date[2] + "-" + date[1] + "-" + date[0] + "');";
+
+            query = "SELECT COUNT(*) FROM products WHERE product_id='" + product_id + "';";
+            mySqlCommand = new MySqlCommand(query, sqlConnection);
+            int count = Convert.ToInt32(mySqlCommand.ExecuteScalar());
+            if(count == 0)
+            {
+                return false;                
+            }
+
+            query = "SELECT manufacture_id FROM products where product_id='" + product_id + "' ORDER BY RAND() LIMIT 0,1;";
+            mySqlCommand = new MySqlCommand(query, sqlConnection);
+            dataReader = mySqlCommand.ExecuteReader();
+            String manufacture_id = "";
+            while (dataReader.Read())
+            {
+                manufacture_id = dataReader[0].ToString();
+            }
+            dataReader.Close();
+
+            query = "INSERT INTO shipping VALUES('" + shipping_id + "','" + manufacture_id + "','" + product_id + "','" + buyer_id + "'," + cost + ",'" + date[2] + "-" + date[1] + "-" + date[0] + "');";
             try
             {
                 mySqlCommand = new MySqlCommand(query, sqlConnection);
@@ -316,20 +456,10 @@ namespace MockSAP
                 return false;
             }
 
-            query = "SELECT quantity FROM stores WHERE product_id='" + material_id + "';";
-            String material_quantity = "";
-            mySqlCommand = new MySqlCommand(query, sqlConnection);
-            dataReader = mySqlCommand.ExecuteReader();
-            while (dataReader.Read())
-            {
-                material_quantity = dataReader[0].ToString();
-            }
-            dataReader.Close();
-
-            double quan = Convert.ToDouble(material_quantity) - Convert.ToDouble(quantity);
-            query = "UPDATE stores SET quantity = " + quan + " WHERE product_id ='" + material_id + "';";
+            query = "DELETE FROM products WHERE manufacture_id='" + manufacture_id + "';";
             mySqlCommand = new MySqlCommand(query, sqlConnection);
             mySqlCommand.ExecuteNonQuery();
+
             return true;
         }
 
@@ -480,7 +610,7 @@ namespace MockSAP
         public List<String[]> getSales()
         {
             List<String[]> l = new List<String[]>();
-            String query = "SELECT shipping_id, product_id, buyer_id, quantity, cost, DATE_FORMAT(date_of_shipping,'%d-%m-%y')" +
+            String query = "SELECT shipping_id, manufacture_id, product_id, buyer_id, cost, DATE_FORMAT(date_of_shipping,'%d-%m-%y')" +
                 " FROM shipping;";
             MySqlCommand mySqlCommand = new MySqlCommand(query, sqlConnection);
             MySqlDataReader dataReader = mySqlCommand.ExecuteReader();
@@ -488,6 +618,23 @@ namespace MockSAP
             {
                 String[] s = {
                     dataReader[0].ToString(),dataReader[1].ToString(),dataReader[2].ToString(),dataReader[3].ToString(),dataReader[4].ToString(),dataReader[5].ToString()};
+                l.Add(s);
+            }
+            dataReader.Close();
+            return l;
+        }
+
+        public List<String[]> getProducts()
+        {
+            List<String[]> l = new List<String[]>();
+            String query = "SELECT manufacture_id, product_id, manufacturing_cost, DATE_FORMAT(date_of_manufacture,'%d-%m-%y')" +
+                " FROM products;";
+            MySqlCommand mySqlCommand = new MySqlCommand(query, sqlConnection);
+            MySqlDataReader dataReader = mySqlCommand.ExecuteReader();
+            while (dataReader.Read())
+            {
+                String[] s = {
+                    dataReader[0].ToString(),dataReader[1].ToString(),dataReader[2].ToString(),dataReader[3].ToString()};
                 l.Add(s);
             }
             dataReader.Close();

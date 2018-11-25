@@ -5,40 +5,59 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Login"
         mc:Ignorable="d"
-        Title="MockSAP - Home"  Height="506" Width="729.5" Background="#00F7BA" >
+        Title="MockSAP - Home"  Height="506" Width="729.5" Background="#232F34" ResizeMode="NoResize" >
     <Grid>
-        <TextBlock x:Name="Loggedon_name" HorizontalAlignment="Left" Margin="10,449,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
-        <Button Content="Log out" Click="Logout_Button_Click" HorizontalAlignment="Left" Margin="637,445,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBlock x:Name="Loggedon_name" HorizontalAlignment="Left" Margin="10,449,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" FontStyle="Italic" Foreground="White"/>
+        <Button Content="Log out" Click="Logout_Button_Click" HorizontalAlignment="Left" Margin="637,445,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.5,0.5" ClickMode="Press" Background="#FFF9AA33"/>
         <TabControl HorizontalAlignment="Left" Height="440" VerticalAlignment="Top" Width="722">
             <TabItem Header="Purchases" Margin="-2,0,-116.6,-1">
-                <Grid Background="#33323E" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                    <DataGrid x:Name="PurchasesGrid" HorizontalAlignment="Left" Height="175" Margin="191,227,0,0" VerticalAlignment="Top" Width="515"/>
-                    <DataGrid x:Name="VendorListGrid" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="165" Margin="314,16,0,0" VerticalAlignment="Top" Width="392"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="314,0,0,0" TextWrapping="Wrap" Text="Vendor List" VerticalAlignment="Top"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="191,211,0,0" TextWrapping="Wrap" Text="Purchase History" VerticalAlignment="Top"/>
-                    <Button x:Name="new_purchase" Click="new_purchase_Click"  Content="Make new Purchase" HorizontalAlignment="Left" Margin="33,281,0,0" VerticalAlignment="Top" Width="127" Height="54"/>
-                    <Button x:Name="new_vendor" Click="new_vendor_Click" Content="Add New Vendor" HorizontalAlignment="Left" Margin="33,68,0,0" VerticalAlignment="Top" Width="127" Height="54"/>
-                    <Button x:Name="modify_vendor" Click="modify_vendor_Click" Content="Modify Vendor data" HorizontalAlignment="Left" Margin="314,186,0,0" VerticalAlignment="Top" Width="127" Height="23"/>
-                    <Button x:Name="delete_vendor" Click="delete_vendor_Click" Content="Delete Vendor" HorizontalAlignment="Left" Margin="446,186,0,0" VerticalAlignment="Top" Width="127" Height="23"/>
+                <Grid Background="#FF4A6572" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="-10,0,-9,-11">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="317*"/>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="165*"/>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="118*"/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid x:Name="PurchasesGrid" HorizontalAlignment="Left" Height="85" Margin="15,285,0,0" VerticalAlignment="Top" Width="700" Grid.ColumnSpan="6"/>
+                    <DataGrid x:Name="VendorListGrid" HorizontalAlignment="Left" Height="146" Margin="10,42,0,0" VerticalAlignment="Top" Width="705" Grid.ColumnSpan="6"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="15,10,0,0" TextWrapping="Wrap" Foreground="White" Text="VENDOR LIST" VerticalAlignment="Top" FontSize="20" FontFamily="Yu Gothic UI Semibold" RenderTransformOrigin="0.105,0.564" Height="27" Width="128"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="15,253,0,0" TextWrapping="Wrap" Foreground="White" Text="PURCHASE HISTORY" VerticalAlignment="Top" RenderTransformOrigin="0.543,2.569" FontSize="20" TextDecorations="{x:Null}" FontFamily="Yu Gothic UI Semibold" Height="27" Width="227"/>
+                    <Button x:Name="new_purchase" Click="new_purchase_Click"  Content="NEW PURCHASE" HorizontalAlignment="Left" Margin="10,375,0,0" VerticalAlignment="Top" Width="123" Height="30" FontFamily="Yu Gothic UI Semibold" FontSize="15" Grid.Column="4" Foreground="#232f34" Background="White" Grid.ColumnSpan="2"/>
+                    <Button x:Name="new_vendor" Click="new_vendor_Click" HorizontalAlignment="Left" Content="ADD VENDOR" Margin="10,195,0,0" VerticalAlignment="Top" Width="123" Height="35" FontSize="15" Grid.Column="4" Foreground="#232f34" Grid.ColumnSpan="2" Background="White">
+                    </Button>
+                    <Button x:Name="modify_vendor" Click="modify_vendor_Click" Content="MODIFY" HorizontalAlignment="Left" Margin="15,193,0,0" VerticalAlignment="Top" Width="112" Height="24" FontSize="15" Background="White" Foreground="#FF232F29"/>
+                    <Button x:Name="delete_vendor" Click="delete_vendor_Click" Content="REMOVE" HorizontalAlignment="Left" Margin="145,194,0,0" VerticalAlignment="Top" Width="112" Height="23" Foreground="White" ClipToBounds="True" SnapsToDevicePixels="True" FontFamily="Yu Gothic UI Semibold" Cursor="Cross" Background="#FFFF4848">
+
+                    </Button>
                 </Grid>
             </TabItem>
             <TabItem Header="Stores" Margin="118.6,0,-246.6,-1">
                 <Grid Background="#33323E" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                     <DataGrid x:Name="MaterialDataGrid" HorizontalAlignment="Left" Height="192" Margin="516,27,0,0" VerticalAlignment="Top" Width="190"/>
                     <TextBlock HorizontalAlignment="Left" Margin="516,6,0,0" TextWrapping="Wrap" Text="Raw Materials: " VerticalAlignment="Top"/>
-                    <DataGrid HorizontalAlignment="Left" Height="100" Margin="10,27,0,0" VerticalAlignment="Top" Width="100"/>
+                    <DataGrid x:Name="ProductsGrid" HorizontalAlignment="Left" Height="209" Margin="10,27,0,0" VerticalAlignment="Top" Width="468"/>
+                    <Button x:Name="manufacture_button" Click="manufacture_button_Click" Content="Manufacture" HorizontalAlignment="Left" Margin="179,259,0,0" VerticalAlignment="Top" Width="75"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Shipping" Margin="248.6,0,-248.8,-1" HorizontalAlignment="Left" Width="225">
-                <Grid Background="#33323E" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                    <DataGrid x:Name="SalesGrid" HorizontalAlignment="Left" Height="175" Margin="191,227,0,0" VerticalAlignment="Top" Width="515"/>
-                    <DataGrid x:Name="BuyerListGrid" HorizontalAlignment="Left" Height="165" Margin="314,16,0,0" VerticalAlignment="Top" Width="392"/>
-                    <TextBlock HorizontalAlignment="Left" Foreground="White" Margin="314,0,0,0" TextWrapping="Wrap" Text="Buyer List" VerticalAlignment="Top"/>
-                    <TextBlock HorizontalAlignment="Left" Foreground="White" Margin="191,211,0,0" TextWrapping="Wrap" Text="Sales History" VerticalAlignment="Top"/>
-                    <Button x:Name="new_sale" Click="new_sale_Click" Content="Make new Sale" HorizontalAlignment="Left" Margin="33,281,0,0" VerticalAlignment="Top" Width="127" Height="54"/>
-                    <Button x:Name="new_buyer" Content="Add New Buyer" Click="new_buyer_Click" HorizontalAlignment="Left" Margin="33,74,0,0" VerticalAlignment="Top" Width="127" Height="54"/>
-                    <Button x:Name="modify_buyer" Content="Modify Buyer data" Click="modify_buyer_Click" HorizontalAlignment="Left" Margin="314,186,0,0" VerticalAlignment="Top" Width="127" Height="23"/>
-                    <Button x:Name="delete_buyer" Content="Delete Buyer" Click="delete_buyer_Click" HorizontalAlignment="Left" Margin="446,186,0,0" VerticalAlignment="Top" Width="127" Height="23"/>
+                <Grid Background="#FF344955" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="7*"/>
+                        <ColumnDefinition Width="130*"/>
+                        <ColumnDefinition Width="20*"/>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="524*"/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid x:Name="SalesGrid" HorizontalAlignment="Left" Height="117" Margin="3,290,0,0" VerticalAlignment="Top" Width="567" Grid.ColumnSpan="4" Grid.Column="1"/>
+                    <DataGrid x:Name="BuyerListGrid" HorizontalAlignment="Left" Height="165" Margin="3,46,0,0" VerticalAlignment="Top" Width="696" Grid.ColumnSpan="4" Grid.Column="1"/>
+                    <TextBlock Margin="3,10,10,0" TextWrapping="Wrap" Text="BUYERS LIST" VerticalAlignment="Top" FontSize="20" Foreground="White" Height="27" Grid.ColumnSpan="3" Grid.Column="1"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="3,260,0,0" TextWrapping="Wrap" Text="SALES HISTORY" Foreground="White" VerticalAlignment="Top" Height="25" Width="147" Grid.ColumnSpan="2" FontSize="20" Grid.Column="1"/>
+                    <Button x:Name="new_sale" Click="new_sale_Click" Content="NEW SALE" HorizontalAlignment="Left" Margin="390,290,0,0" VerticalAlignment="Top" Width="127" Height="54" Grid.Column="4" Background="White" FontSize="15"/>
+                    <Button x:Name="new_buyer" FontSize="15" Content="Add New Buyer" Click="new_buyer_Click" HorizontalAlignment="Left" Margin="374,216,0,0" VerticalAlignment="Top" Width="140" Height="35" Background="White" Grid.Column="4" BorderBrush="White" Foreground="#FF232F29"/>
+                    <Button x:Name="modify_buyer" FontSize="15" Content="MODIFY" Click="modify_buyer_Click" HorizontalAlignment="Left" Margin="3,216,0,0" VerticalAlignment="Top" Width="140" Height="24" BorderBrush="White" Grid.ColumnSpan="2" Grid.Column="1" Background="White"/>
+                    <Button x:Name="delete_buyer" Content="DELETE BUYER" Foreground="White" Click="delete_buyer_Click" HorizontalAlignment="Left" Margin="0,216,0,0" VerticalAlignment="Top" Width="140" Height="24" Grid.Column="3" Background="#FFFF4848" Grid.ColumnSpan="2"/>
                 </Grid>
             </TabItem>
         </TabControl>

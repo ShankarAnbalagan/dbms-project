@@ -7,26 +7,28 @@
         mc:Ignorable="d"
         Closed="Window_Closed"
         Title="MockSAP - Add New User" Height="244" Width="746.25" Background="Aquamarine"  ResizeMode="NoResize">
-    <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Add/Remove New User" VerticalAlignment="Top" FontSize="25" FontFamily="Segoe UI Black" Foreground="White">
-            <TextBlock.Effect>
-                <DropShadowEffect/>
-            </TextBlock.Effect>
+    <Grid Background="#FF344955">
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Add/Remove User" VerticalAlignment="Top" FontSize="25" FontFamily="Yu Gothic UI Semibold" Foreground="White">
         </TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="130,56,0,0" TextWrapping="Wrap" Text="User ID : " VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="110,87,0,0" TextWrapping="Wrap" Text="User Name : " VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="119,117,0,0" TextWrapping="Wrap" Text="Password : " VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="86,147,0,0" TextWrapping="Wrap" Text="Verify Password : " VerticalAlignment="Top" Width="92"/>
-        <TextBox x:Name="UserId" HorizontalAlignment="Left" Height="Auto" Margin="183,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" MaxLength="4" Width="120"/>
-        <TextBox x:Name="Username" HorizontalAlignment="Left" Height="Auto" Margin="183,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" MaxLength="30" Width="120"/>
-        <PasswordBox x:Name="UPassword" HorizontalAlignment="Left" Margin="183,117,0,0" VerticalAlignment="Top" Width="120" Height="Auto" MaxLength="30"/>
-        <PasswordBox x:Name="VerifyUPassword" HorizontalAlignment="Left" Margin="183,147,0,0" VerticalAlignment="Top" Width="120" Height="Auto"/>
-        <Button Click="AddUser_Button_Click" Content="Add User" HorizontalAlignment="Left" Margin="153,175,0,0" VerticalAlignment="Top" Width="75"/>
-        <TextBlock x:Name="status1" HorizontalAlignment="Left" Margin="303,56,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="196"/>
-        <TextBlock x:Name="status2" HorizontalAlignment="Left" Margin="303,87,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="415"/>
-        <TextBlock x:Name="status3" HorizontalAlignment="Left" Margin="303,117,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="196"/>
-        <TextBlock x:Name="status4" HorizontalAlignment="Left" Margin="303,147,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="196"/>
-        <Button Click="RemoveUser_Button_Click" Content="Remove User" HorizontalAlignment="Left" Margin="272,175,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBlock HorizontalAlignment="Left" Margin="393,53,0,0" TextWrapping="Wrap" Text="User ID : " VerticalAlignment="Top" Foreground="White"/>
+        <TextBlock HorizontalAlignment="Left" Margin="373,84,0,0" TextWrapping="Wrap" Text="User Name : " VerticalAlignment="Top" Foreground="White"/>
+        <TextBlock HorizontalAlignment="Left" Margin="382,114,0,0" TextWrapping="Wrap" Text="Password : " VerticalAlignment="Top" Foreground="White"/>
+        <TextBlock HorizontalAlignment="Left" Margin="349,144,0,0" TextWrapping="Wrap" Text="Verify Password : " VerticalAlignment="Top" Width="92" Foreground="White"/>
+        <TextBox x:Name="UserId" HorizontalAlignment="Left" Height="Auto" Margin="446,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" MaxLength="4" Width="120"/>
+        <TextBox x:Name="Username" HorizontalAlignment="Left" Height="Auto" Margin="446,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" MaxLength="30" Width="120"/>
+        <PasswordBox x:Name="UPassword" HorizontalAlignment="Left" Margin="446,114,0,0" VerticalAlignment="Top" Width="120" Height="Auto" MaxLength="30"/>
+        <PasswordBox x:Name="VerifyUPassword" HorizontalAlignment="Left" Margin="446,144,0,0" VerticalAlignment="Top" Width="120" Height="Auto"/>
+        <Button Click="AddUser_Button_Click" Content="Add User" HorizontalAlignment="Left" Margin="565,185,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBlock x:Name="status1" HorizontalAlignment="Left" Margin="584,53,-40,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="196"/>
+        <TextBlock x:Name="status2" HorizontalAlignment="Left" Margin="584,84,-259,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="415"/>
+        <TextBlock x:Name="status3" HorizontalAlignment="Left" Margin="584,114,-40,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="196"/>
+        <TextBlock x:Name="status4" HorizontalAlignment="Left" Margin="584,144,-40,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="196"/>
+        <Button Click="RemoveUser_Button_Click" Content="Remove User" HorizontalAlignment="Left" Margin="655,185,0,0" VerticalAlignment="Top" Width="75"/>
+        <Image Margin="10,151,608,0.4">
+            <Image.Source>
+                <BitmapImage  UriSource="D:\Programming\VS\MockSAP\Login\Logo.png" />
+            </Image.Source>
+        </Image>
 
     </Grid>
 </Window>

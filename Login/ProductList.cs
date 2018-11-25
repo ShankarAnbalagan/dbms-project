@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace MockSAP
 {
-    class SalesList
+    class ProductList
     {
         private DatabaseConnection databaseConnection;
         private DataTable table;
-        public SalesList(DataTable table, DatabaseConnection con)
+        public ProductList(DataTable table, DatabaseConnection con)
         {
             this.table = table;
             databaseConnection = con;
@@ -19,19 +19,17 @@ namespace MockSAP
 
         public DataTable AddColums()
         {
-            table.Columns.Add("Sale ID");
             table.Columns.Add("Manufacture ID");
             table.Columns.Add("Product ID");
-            table.Columns.Add("Buyer ID");
             table.Columns.Add("Cost(in crores)");
-            table.Columns.Add("Date of Sale");
+            table.Columns.Add("Date of Purchase");
             return table;
         }
 
         public DataTable AddRows()
         {
             DataRow dr;
-            List<String[]> l = databaseConnection.getSales();
+            List<String[]> l = databaseConnection.getProducts();
             foreach (String[] s in l)
             {
                 dr = table.NewRow();
@@ -39,11 +37,9 @@ namespace MockSAP
                 dr[1] = s[1];
                 dr[2] = s[2];
                 dr[3] = s[3];
-                dr[4] = s[4];
-                dr[5] = s[5];
                 table.Rows.Add(dr);
             }
             return table;
         }
-        }
+    }
 }

@@ -62,25 +62,29 @@ namespace MockSAP
             {
                 error.Text = "Blank entry. Enter values again.";
             }
-            String quan = quantity.Text;
             String cos = cost.Text;
             String dat = dateofsale.Text;
-            if (VerifyInput(pid, quan, cos))
+            if (VerifyInput(pid, cos, dat))
             {
                 String[] date = dat.Split('-');
-                if (databaseConnection.NewSale(pid, mat, ven, quan, cos, date))
+                if (databaseConnection.NewSale(pid, mat, ven, cos, date))
                 {
                     MessageBox.Show("New Sale Added");
                     homePage.RefreshSalesList();
                     homePage.IsEnabled = true;
                     this.Close();
                 }
+                else
+                {
+                    MessageBox.Show("Product not in stock");
+                    this.Close();
+                }
             }
         }
 
-        private Boolean VerifyInput(String pid, String quan, String cos)
+        private Boolean VerifyInput(String pid, String cos, String date)
         {
-            if (!((pid.Length <= 4 && pid.Length > 0) && IsDigitsOnly(quan) && IsDigitsOnly(cos)))
+            if (!((pid.Length <= 4 && pid.Length > 0) && IsDigitsOnly(cos) && date.Length>0))
             {
                 error.Text = "Incorrect entries. Enter values again.";
                 return false;

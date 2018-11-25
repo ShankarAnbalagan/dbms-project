@@ -26,17 +26,20 @@ namespace MockSAP
         private DataTable materialTable;
         private DataTable buyerTable;
         private DataTable salesTable;
+        private DataTable productTable;
         private VendorList vendorList;
         private PurchasesList purchasesList;
         private MaterialList materialList;
         private BuyerList buyerList;
         private SalesList salesList;
+        private ProductList productList;
         private NewPurchase newPurchase;
         private NewVendor newVendor;
         private ModifyVendor modifyVendor;
         private NewSale newSale;
         private NewBuyer newBuyer;
         private ModifyBuyer modifyBuyer;
+        private Manufacture manufacture;
         public HomePage()
         {
             InitializeComponent();
@@ -57,6 +60,8 @@ namespace MockSAP
             buyerList = new BuyerList(buyerTable, database);
             salesTable = new DataTable();
             salesList = new SalesList(salesTable, database);
+            productTable = new DataTable();
+            productList = new ProductList(productTable, database);
             PopulateGridViews();
         }
 
@@ -72,6 +77,8 @@ namespace MockSAP
             BuyerListGrid.ItemsSource = buyerList.AddRows().DefaultView;
             SalesGrid.ItemsSource = salesList.AddColums().DefaultView;
             SalesGrid.ItemsSource = salesList.AddRows().DefaultView;
+            ProductsGrid.ItemsSource = productList.AddColums().DefaultView;
+            ProductsGrid.ItemsSource = productList.AddRows().DefaultView;
         }
 
         private void Logout_Button_Click(object sender, RoutedEventArgs e)
@@ -100,8 +107,18 @@ namespace MockSAP
         {
             salesTable.Clear();
             SalesGrid.ItemsSource = salesList.AddRows().DefaultView;
-            //materialTable.Clear();
-            //MaterialDataGrid.ItemsSource = materialList.AddRows().DefaultView;
+            materialTable.Clear();
+            MaterialDataGrid.ItemsSource = materialList.AddRows().DefaultView;
+            productTable.Clear();
+            ProductsGrid.ItemsSource = productList.AddRows().DefaultView;
+        }
+
+        public void RefreshProductList()
+        {
+            productTable.Clear();
+            ProductsGrid.ItemsSource = productList.AddRows().DefaultView;
+            materialTable.Clear();
+            MaterialDataGrid.ItemsSource = materialList.AddRows().DefaultView;
         }
 
         public void RefreshVendorList()
@@ -205,6 +222,13 @@ namespace MockSAP
                 this.IsEnabled = false;
                 modifyBuyer.StartPage(database, this, item.Row[0].ToString());
             }
+        }
+
+        private void manufacture_button_Click(object sender, RoutedEventArgs e)
+        {
+            manufacture = new Manufacture();
+            this.IsEnabled = false;
+            manufacture.StartPage(this.database, this);
         }
     }
 }

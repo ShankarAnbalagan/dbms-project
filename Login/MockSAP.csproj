@@ -63,6 +63,9 @@
       <DependentUpon>AdminLogin.xaml</DependentUpon>
     </Compile>
     <Compile Include="BuyerList.cs" />
+    <Compile Include="Manufacture.xaml.cs">
+      <DependentUpon>Manufacture.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MaterialList.cs" />
     <Compile Include="ModifyBuyer.xaml.cs">
       <DependentUpon>ModifyBuyer.xaml</DependentUpon>
@@ -82,6 +85,7 @@
     <Compile Include="NewVendor.xaml.cs">
       <DependentUpon>NewVendor.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ProductList.cs" />
     <Compile Include="SalesList.cs" />
     <Compile Include="PurchasesList.cs" />
     <Compile Include="VendorList.cs" />
@@ -106,6 +110,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="HomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Manufacture.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -4,22 +4,26 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="MockSAP - Login" Height="279" Width="466" Background="#33323E" SizeToContent="Height"  ResizeMode="NoResize">
-    <Grid>
-        <TextBox x:Name="Username_textbox" HorizontalAlignment="Left" Height="23" Margin="192,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBlock HorizontalAlignment="Left" Foreground="White" Margin="122,100,0,0" TextWrapping="Wrap" Text="Username: " VerticalAlignment="Top"/>
-        <PasswordBox x:Name="Password_textbox" HorizontalAlignment="Left" Margin="192,130,0,0" VerticalAlignment="Top" Width="120" Height="23"/>
-        <TextBlock HorizontalAlignment="Left" Foreground="White" Margin="122,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Password: "/></TextBlock>
-        <Button Content="Log in" Margin="192,167,145,55" Click="Login_Button_Click"/>
-        <TextBlock x:Name="status" Margin="150,204,87.6,0" Foreground="White" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
-        <TextBlock Margin="290,212,9.6,17.6">
+        Title="MockSAP - Login" Height="279" Width="460" Background="Aquamarine" SizeToContent="Height"  ResizeMode="NoResize">
+    <Grid Background="#FF344955">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="21*"/>
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
+        <TextBox x:Name="Username_textbox" HorizontalAlignment="Center" Height="23" Margin="277,50,34,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="143"/>
+        <TextBlock HorizontalAlignment="Left" Margin="277,29,0,0" TextWrapping="Wrap" Text="USERNAME" VerticalAlignment="Top" RenderTransformOrigin="0.983,-0.625" Width="63" Foreground="White"/>
+        <PasswordBox x:Name="Password_textbox" HorizontalAlignment="Center" Margin="277,114,34,0" VerticalAlignment="Top" Width="143" Height="23"/>
+        <TextBlock HorizontalAlignment="Left" Margin="277,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="PASSWORD" Width="68" RenderTransformOrigin="0.559,1.003" Foreground="White"/>
+        <Button Content="Log in" Margin="277,149,124,33" Click="Login_Button_Click"/>
+        <TextBlock x:Name="status" Margin="277,190,34,0" TextWrapping="Wrap" Foreground="White" VerticalAlignment="Top" Text="TextBlock" FontFamily="Yu Gothic Medium"/>
+        <TextBlock Margin="10,10,314,10" Foreground="White" Grid.Row="1" >
             <Hyperlink Click="NewUser_Hyperlink_Click">Add/Remove New User</Hyperlink>
         </TextBlock>
-        <Rectangle Fill="#00F7BA" HorizontalAlignment="Left" Height="250" Margin="0,0,0,-0.4" VerticalAlignment="Top" Width="18"/>
-        <Rectangle Fill="#00F7BA" HorizontalAlignment="Left" Height="250" Margin="436,0,-0.4,-0.4" VerticalAlignment="Top" Width="18"/>
-        <Rectangle Fill="#00F7BA" HorizontalAlignment="Left" Height="18" Margin="10,0,0,0" VerticalAlignment="Top" Width="434"/>
-        <Rectangle Fill="#00F7BA" HorizontalAlignment="Left" Height="18" Margin="10,232,0,-0.4" VerticalAlignment="Top" Width="434"/>
-        <Image Margin="150,23,127.2,162.6" Source="Logo.png" Stretch="Fill"/>
+        <Image Margin="21,50,213.6,46.6">
+            <Image.Source>
+                <BitmapImage  UriSource="D:\Programming\VS\MockSAP\Login\Logo.png" />
+            </Image.Source>
+        </Image>
 
     </Grid>
 </Window>

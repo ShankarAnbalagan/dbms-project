@@ -6,21 +6,23 @@
         xmlns:local="clr-namespace:Login"
         mc:Ignorable="d"
         Title="MockSAP - New Vendor" Height="345.2" Width="502.4" Background="Aquamarine" Closed="Window_Closed">
-    <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="New Vendor" VerticalAlignment="Top" FontSize="25" FontFamily="Segoe UI Black" Foreground="White">
-            <TextBlock.Effect>
-                <DropShadowEffect/>
-            </TextBlock.Effect>
+    <Grid Background="#FF344955">
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="ADD VENDOR" VerticalAlignment="Top" FontSize="25" FontFamily="Yu Gothic UI Semibold" Foreground="White">
         </TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="80,58,0,0" TextWrapping="Wrap" Text="Enter Vendor ID : " VerticalAlignment="Top"/>
-        <TextBox x:Name="vendor_id" HorizontalAlignment="Left" Height="23" Margin="173,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top" MaxLength="4" Width="120"/>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Enter Vendor Name : " VerticalAlignment="Top" Margin="60,100,0,0"/>
-        <TextBox x:Name="vendor_name" HorizontalAlignment="Left" Height="23" Margin="173,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" MaxLength="50" Width="179"/>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Enter Vendor Address : " VerticalAlignment="Top" Margin="44,139,0,0"/>
-        <TextBox x:Name="vendor_address" HorizontalAlignment="Left" Height="61" Margin="173,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" MaxLength="50"  Width="179"/>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Enter Vendor Phone Number : " VerticalAlignment="Top" Margin="11,216,0,0"/>
-        <TextBox x:Name="vendor_phone" HorizontalAlignment="Left" Height="23" Margin="173,216,0,0" TextWrapping="Wrap" VerticalAlignment="Top" MaxLength="10" Width="120"/>
-        <Button x:Name="add_vendor" Click="add_vendor_Click" Content="Add Vendor" HorizontalAlignment="Left" Margin="173,259,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBlock HorizontalAlignment="Left" Margin="253,42,0,0" TextWrapping="Wrap" Text="Enter Vendor ID : " VerticalAlignment="Top" Foreground="White"/>
+        <TextBox x:Name="vendor_id" HorizontalAlignment="Left" Height="23" Margin="253,63,0,0" TextWrapping="Wrap" VerticalAlignment="Top" MaxLength="4" Width="107"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Vendor Name : " VerticalAlignment="Top" Margin="381,42,0,0" Foreground="White"/>
+        <TextBox x:Name="vendor_name" HorizontalAlignment="Left" Height="23" Margin="381,63,0,0" TextWrapping="Wrap" VerticalAlignment="Top" MaxLength="50" Width="103"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Enter Vendor Address : " VerticalAlignment="Top" Margin="253,99,0,0" Foreground="White"/>
+        <TextBox x:Name="vendor_address" HorizontalAlignment="Left" Height="61" Margin="253,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" MaxLength="50"  Width="231"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Vendor Phone Number : " VerticalAlignment="Top" Margin="257,196,0,0" Foreground="White"/>
+        <TextBox x:Name="vendor_phone" HorizontalAlignment="Left" Height="23" Margin="257,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top" MaxLength="10" Width="227"/>
+        <Button x:Name="add_vendor" Click="add_vendor_Click" Content="Add Vendor" HorizontalAlignment="Left" Margin="257,255,0,0" VerticalAlignment="Top" Width="227" Height="25"/>
+        <Image Margin="10,243,364,10">
+            <Image.Source>
+                <BitmapImage  UriSource="D:\Programming\VS\MockSAP\Login\Logo.png" />
+            </Image.Source>
+        </Image>
 
     </Grid>
 </Window>

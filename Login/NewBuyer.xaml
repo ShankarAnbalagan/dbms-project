@@ -6,21 +6,26 @@
         xmlns:local="clr-namespace:Login"
         mc:Ignorable="d"
         Title="MockSAP - New Buyer" Height="345.2" Width="502.4" Background="Aquamarine" Closed="Window_Closed">
-    <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="New Buyer" VerticalAlignment="Top" FontSize="25" FontFamily="Segoe UI Black" Foreground="White">
-            <TextBlock.Effect>
-                <DropShadowEffect/>
-            </TextBlock.Effect>
-        </TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="80,58,0,0" TextWrapping="Wrap" Text="Enter Buyer ID : " VerticalAlignment="Top"/>
-        <TextBox x:Name="buyer_id" HorizontalAlignment="Left" Height="23" Margin="173,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top" MaxLength="4" Width="120"/>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Enter Buyer Name : " VerticalAlignment="Top" Margin="60,100,0,0"/>
-        <TextBox x:Name="buyer_name" HorizontalAlignment="Left" Height="23" Margin="173,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" MaxLength="50" Width="179"/>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Enter Buyer Address : " VerticalAlignment="Top" Margin="44,139,0,0"/>
-        <TextBox x:Name="buyer_address" HorizontalAlignment="Left" Height="61" Margin="173,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" MaxLength="50"  Width="179"/>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Enter Buyer Phone Number : " VerticalAlignment="Top" Margin="11,216,0,0"/>
-        <TextBox x:Name="buyer_phone" HorizontalAlignment="Left" Height="23" Margin="173,216,0,0" TextWrapping="Wrap" VerticalAlignment="Top" MaxLength="10" Width="120"/>
-        <Button x:Name="add_buyer" Click="add_buyer_Click" Content="Add Buyer" HorizontalAlignment="Left" Margin="173,259,0,0" VerticalAlignment="Top" Width="75"/>
+    <Grid Background="#FF344955">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="465*"/>
+            <ColumnDefinition Width="29*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock HorizontalAlignment="Center" Margin="10,35,282,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="25" FontFamily="Yu Gothic UI Semibold" Foreground="White" Width="173"><Run Text="ADD BUYER"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="285,30,0,0" TextWrapping="Wrap" Text="Enter Buyer ID : " VerticalAlignment="Top" Foreground="White"/>
+        <TextBox x:Name="buyer_id" HorizontalAlignment="Left" Height="23" Margin="285,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" MaxLength="4" Width="179"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Enter Buyer Name : " VerticalAlignment="Top" Margin="285,93,0,0" Foreground="White"/>
+        <TextBox x:Name="buyer_name" HorizontalAlignment="Left" Height="23" Margin="285,114,0,0" TextWrapping="Wrap" VerticalAlignment="Top" MaxLength="50" Width="179"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Enter Buyer Address : " VerticalAlignment="Top" Margin="285,153,0,0" Foreground="White"/>
+        <TextBox x:Name="buyer_address" HorizontalAlignment="Left" Height="36" Margin="285,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top" MaxLength="50"  Width="179"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Phone No." VerticalAlignment="Top" Margin="285,225,0,0" Foreground="White"/>
+        <TextBox x:Name="buyer_phone" HorizontalAlignment="Left" Height="23" Margin="285,246,0,0" TextWrapping="Wrap" VerticalAlignment="Top" MaxLength="10" Width="179"/>
+        <Button x:Name="add_buyer" Click="add_buyer_Click" Content="Add Buyer" HorizontalAlignment="Left" Margin="285,284,0,0" VerticalAlignment="Top" Width="75"/>
+        <Image Margin="11,243,334.2,10">
+            <Image.Source>
+                <BitmapImage  UriSource="D:\Programming\VS\MockSAP\Login\Logo.png" />
+            </Image.Source>
+        </Image>
 
     </Grid>
 </Window>

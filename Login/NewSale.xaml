@@ -6,26 +6,27 @@
         xmlns:local="clr-namespace:Login"
         mc:Ignorable="d"
         Title="MockSAP - New Sale" Height="321.2" Width="572.8" Background="Aquamarine" Closed="Window_Closed" >
-    <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="New Sale" VerticalAlignment="Top" FontSize="25" FontFamily="Segoe UI Black" Foreground="White">
-            <TextBlock.Effect>
-                <DropShadowEffect/>
-            </TextBlock.Effect>
-        </TextBlock>
-        <TextBox x:Name="sale_id" HorizontalAlignment="Left" Height="23" Margin="173,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" MaxLength="4" Width="120"/>
-        <TextBlock HorizontalAlignment="Left" Margin="92,75,0,0" TextWrapping="Wrap" Text="Enter Sales ID : " VerticalAlignment="Top"/>
-        <ComboBox x:Name="product_dropdown" Loaded="product_dropdown_Loaded" HorizontalAlignment="Left" Margin="173,121,0,0" VerticalAlignment="Top" Width="120"/>
-        <TextBlock HorizontalAlignment="Left" Margin="86,127,0,0" TextWrapping="Wrap" Text="Select Product : " VerticalAlignment="Top"/>
-        <ComboBox x:Name="buyer_dropdown" Loaded="buyer_dropdown_Loaded" HorizontalAlignment="Left" Margin="414,121,0,0" VerticalAlignment="Top" Width="120"/>
-        <TextBlock HorizontalAlignment="Left" Margin="341,127,0,0" TextWrapping="Wrap" Text="Select Buyer : " VerticalAlignment="Top"/>
-        <TextBox x:Name="quantity" HorizontalAlignment="Left" Height="23" Margin="173,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBlock HorizontalAlignment="Left" Margin="47,172,0,0" TextWrapping="Wrap" Text="Enter Quantity(in no.) : " VerticalAlignment="Top"/>
-        <TextBox x:Name="cost" HorizontalAlignment="Left" Height="23" Margin="414,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBlock HorizontalAlignment="Left" Margin="298,172,0,0" TextWrapping="Wrap" Text="Enter cost(in Crores) : " VerticalAlignment="Top"/>
-        <DatePicker x:Name="dateofsale" HorizontalAlignment="Left" Margin="173,205,0,0" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="66,209,0,0" TextWrapping="Wrap" Text="Enter Date of sale : " VerticalAlignment="Top"/>
-        <Button x:Name="make_sale" Click="make_sale_Click" Content="Make Sale" HorizontalAlignment="Left" Margin="335,226,0,0" VerticalAlignment="Top" Width="167" Height="45"/>
-        <TextBlock x:Name="error" HorizontalAlignment="Left" Margin="66,258,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+    <Grid Background="#FF344955">
+        <TextBlock HorizontalAlignment="Center" Margin="10,10,381,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="25" FontFamily="Yu Gothic UI Semibold" Foreground="White" Width="174"><Run Text="SELL ITEM"/></TextBlock>
+        <TextBox x:Name="sale_id" HorizontalAlignment="Left" Height="23" Margin="274,68,0,0" TextWrapping="Wrap" VerticalAlignment="Top" MaxLength="4" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="274,47,0,0" TextWrapping="Wrap" Text="Sales ID " VerticalAlignment="Top" Foreground="White"/>
+        <ComboBox x:Name="product_dropdown" Loaded="product_dropdown_Loaded" HorizontalAlignment="Left" Margin="274,126,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="274,105,0,0" TextWrapping="Wrap" Text="Product " VerticalAlignment="Top" Foreground="White"/>
+        <ComboBox x:Name="buyer_dropdown" Loaded="buyer_dropdown_Loaded" HorizontalAlignment="Left" Margin="423,68,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="423,47,0,0" TextWrapping="Wrap" Text="Buyer" VerticalAlignment="Top" Foreground="White"/>
+        <TextBox x:Name="quantity" HorizontalAlignment="Left" Height="23" Margin="274,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="274,161,0,0" TextWrapping="Wrap" Text="Quantity (in no.)" VerticalAlignment="Top" Foreground="White"/>
+        <TextBox x:Name="cost" HorizontalAlignment="Left" Height="23" Margin="423,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="423,105,0,0" TextWrapping="Wrap" Text="Cost (in Crore)" VerticalAlignment="Top" Foreground="White"/>
+        <DatePicker x:Name="dateofsale" HorizontalAlignment="Left" Margin="423,181,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="423,161,0,0" TextWrapping="Wrap" Text="DOS" VerticalAlignment="Top" Foreground="White"/>
+        <Button x:Name="make_sale" Click="make_sale_Click" Content="SELL ITEM" HorizontalAlignment="Left" Margin="274,229,0,0" VerticalAlignment="Top" Width="150" Height="26"/>
+        <TextBlock x:Name="error" HorizontalAlignment="Left" Margin="450,234,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <Image Margin="10,226,434.4,3">
+            <Image.Source>
+                <BitmapImage  UriSource="D:\Programming\VS\MockSAP\Login\Logo.png" />
+            </Image.Source>
+        </Image>
 
     </Grid>
 </Window>
