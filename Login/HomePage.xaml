@@ -28,7 +28,7 @@
                     <Button x:Name="new_vendor" Click="new_vendor_Click" HorizontalAlignment="Left" Content="ADD VENDOR" Margin="10,195,0,0" VerticalAlignment="Top" Width="123" Height="35" FontSize="15" Grid.Column="4" Foreground="#232f34" Grid.ColumnSpan="2" Background="White">
                     </Button>
                     <Button x:Name="modify_vendor" Click="modify_vendor_Click" Content="MODIFY" HorizontalAlignment="Left" Margin="15,193,0,0" VerticalAlignment="Top" Width="112" Height="24" FontSize="15" Background="White" Foreground="#FF232F29"/>
-                    <Button x:Name="delete_vendor" Click="delete_vendor_Click" Content="REMOVE" HorizontalAlignment="Left" Margin="145,194,0,0" VerticalAlignment="Top" Width="112" Height="23" Foreground="White" ClipToBounds="True" SnapsToDevicePixels="True" FontFamily="Yu Gothic UI Semibold" Cursor="Cross" Background="#FFFF4848">
+                    <Button x:Name="delete_vendor" Click="delete_vendor_Click" Content="REMOVE" HorizontalAlignment="Left" Margin="145,194,0,0" VerticalAlignment="Top" Width="112" Height="23" Foreground="White" ClipToBounds="True" SnapsToDevicePixels="True" FontFamily="Yu Gothic UI Semibold" Background="#FFFF4848">
 
                     </Button>
                 </Grid>

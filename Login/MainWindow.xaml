@@ -10,12 +10,12 @@
             <RowDefinition Height="21*"/>
             <RowDefinition Height="4*"/>
         </Grid.RowDefinitions>
-        <TextBox x:Name="Username_textbox" HorizontalAlignment="Center" Height="23" Margin="277,50,33.6,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="143"/>
+        <TextBox x:Name="Username_textbox" HorizontalAlignment="Center" Height="23" Margin="277,50,23.6,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="153"/>
         <TextBlock HorizontalAlignment="Left" Margin="277,29,0,0" TextWrapping="Wrap" Text="USERNAME" VerticalAlignment="Top" RenderTransformOrigin="0.983,-0.625" Width="63" Foreground="White"/>
-        <PasswordBox x:Name="Password_textbox" HorizontalAlignment="Center" Margin="277,114,33.6,0" VerticalAlignment="Top" Width="143" Height="23"/>
+        <PasswordBox x:Name="Password_textbox" HorizontalAlignment="Center" Margin="277,114,23.6,0" VerticalAlignment="Top" Width="153" Height="23"/>
         <TextBlock HorizontalAlignment="Left" Margin="277,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="PASSWORD" Width="68" RenderTransformOrigin="0.559,1.003" Foreground="White"/>
-        <Button Content="Log in" Margin="277,149,124,33" Click="Login_Button_Click"/>
-        <TextBlock x:Name="status" Margin="277,190,34,0" TextWrapping="Wrap" Foreground="White" VerticalAlignment="Top" Text="TextBlock" FontFamily="Yu Gothic Medium"/>
+        <Button Content="Log in" Margin="277,154,123.6,27.6" Click="Login_Button_Click"/>
+        <TextBlock x:Name="status" Margin="277,206,33.6,0" TextWrapping="Wrap" Foreground="White" VerticalAlignment="Top" Text="TextBlock" FontFamily="Yu Gothic Medium" Grid.RowSpan="2"/>
         <TextBlock Margin="10,10,314,10" Foreground="White" Grid.Row="1" >
             <Hyperlink Click="NewUser_Hyperlink_Click">Add/Remove New User</Hyperlink>
         </TextBlock>

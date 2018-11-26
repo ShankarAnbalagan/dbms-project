@@ -22,7 +22,7 @@ namespace MockSAP
             table.Columns.Add("Manufacture ID");
             table.Columns.Add("Product ID");
             table.Columns.Add("Cost(in crores)");
-            table.Columns.Add("Date of Purchase");
+            table.Columns.Add("Date of Maufacture");
             return table;
         }
 
