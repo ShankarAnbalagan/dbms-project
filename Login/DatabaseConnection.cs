@@ -59,7 +59,7 @@ namespace MockSAP
 
         public Boolean verifyUser(String AdminPass)
         {
-            String query = "SELECT passwd FROM login_data WHERE user_name = 'ADMIN';";
+            String query = "call get_adminpass();";     //Calling stored procedure
             MySqlCommand mySqlCommand = new MySqlCommand(query, sqlConnection);
             MySqlDataReader dataReader = mySqlCommand.ExecuteReader();
             String p = "lol";

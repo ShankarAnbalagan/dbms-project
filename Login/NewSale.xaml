@@ -14,12 +14,10 @@
         <TextBlock HorizontalAlignment="Left" Margin="274,105,0,0" TextWrapping="Wrap" Text="Product " VerticalAlignment="Top" Foreground="White"/>
         <ComboBox x:Name="buyer_dropdown" Loaded="buyer_dropdown_Loaded" HorizontalAlignment="Left" Margin="423,68,0,0" VerticalAlignment="Top" Width="120"/>
         <TextBlock HorizontalAlignment="Left" Margin="423,47,0,0" TextWrapping="Wrap" Text="Buyer" VerticalAlignment="Top" Foreground="White"/>
-        <TextBox x:Name="quantity" HorizontalAlignment="Left" Height="23" Margin="274,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBlock HorizontalAlignment="Left" Margin="274,161,0,0" TextWrapping="Wrap" Text="Quantity (in no.)" VerticalAlignment="Top" Foreground="White"/>
         <TextBox x:Name="cost" HorizontalAlignment="Left" Height="23" Margin="423,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBlock HorizontalAlignment="Left" Margin="423,105,0,0" TextWrapping="Wrap" Text="Cost (in Crore)" VerticalAlignment="Top" Foreground="White"/>
-        <DatePicker x:Name="dateofsale" HorizontalAlignment="Left" Margin="423,181,0,0" VerticalAlignment="Top" Width="120"/>
-        <TextBlock HorizontalAlignment="Left" Margin="423,161,0,0" TextWrapping="Wrap" Text="DOS" VerticalAlignment="Top" Foreground="White"/>
+        <DatePicker x:Name="dateofsale" HorizontalAlignment="Left" Margin="274,181,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="274,161,0,0" TextWrapping="Wrap" Text="DOS" VerticalAlignment="Top" Foreground="White"/>
         <Button x:Name="make_sale" Click="make_sale_Click" Content="SELL ITEM" HorizontalAlignment="Left" Margin="274,229,0,0" VerticalAlignment="Top" Width="150" Height="26"/>
         <TextBlock x:Name="error" HorizontalAlignment="Left" Margin="450,234,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
         <Image Margin="10,226,434.4,3">
